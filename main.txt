@@ -1,3 +1,5 @@
+git init
+
 git clone // acá se escribe la url del github
 
 cd // acá se escribe el nombre de la carpeta
