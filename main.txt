@@ -11,3 +11,5 @@ git push
 git checkout -b // acá se agrega el nombre de la rama -// el -b se usa unicamente para crear la rama
 
 git pull
+
+git merge
