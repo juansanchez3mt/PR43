@@ -1,26 +1,33 @@
 package com.example.reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name= "client")
-public class Lib implements Serializable {
+@Table(name= "library")
+public class Library implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idClient;
+    private Integer id;
     private String name;
-    private String email;
-    private Integer age;
-    private String password;
+    private String target;
+    private Integer capacity;
+    private String description;
 
-    public Integer getIdClient() {
-        return idClient;
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    @JsonIgnoreProperties("library")
+    private Category category;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdClient(Integer idClient) {
-        this.idClient = idClient;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -31,27 +38,35 @@ public class Lib implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTarget() {
+        return target;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTarget(String target) {
+        this.target = target;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getCapacity() {
+        return capacity;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 
-    public String getPassword() {
-        return password;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
