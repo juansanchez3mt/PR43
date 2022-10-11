@@ -1,3 +1,5 @@
+git init
+
 git clone // acá se escribe la url del github
 
 cd // acá se escribe el nombre de la carpeta
@@ -11,3 +13,5 @@ git push
 git checkout -b // acá se agrega el nombre de la rama -// el -b se usa unicamente para crear la rama
 
 git pull
+
+git merge
