@@ -37,9 +37,7 @@ public class ScoreService {
                 if(s.getScore()!= null){
                     temp.setScore(s.getScore());
                 }
-                if(s.getReservation()!= null){
-                    temp.setReservation(s.getReservation());
-                }
+
                 return scoreRepository.save(temp);
             }
         }

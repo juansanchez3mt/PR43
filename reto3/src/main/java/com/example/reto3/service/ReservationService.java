@@ -17,7 +17,10 @@ public class ReservationService {
     }
     public Reservation save(Reservation r){
         if(r.getIdReservation()== null){
+            r.setStatus("created");
             return reservationRepository.save(r);
+
+
         }
         else{
             Optional<Reservation> st= reservationRepository.getById(r.getIdReservation());
@@ -34,13 +37,13 @@ public class ReservationService {
             Optional<Reservation> st= reservationRepository.getById(r.getIdReservation());
             if(st.isPresent()){
                 Reservation temp= st.get();
-                if(r.getStarDate()!= null){
-                    temp.setStarDate(r.getStarDate());
+                if(r.getStartDate()!= null){
+                    temp.setStartDate(r.getStartDate());
                 }
                 if(r.getDevolutionDate()!= null){
                     temp.setDevolutionDate(r.getDevolutionDate());
                 }
-                if(r.getStatus()!= null){
+                if(r.getStatus() == null){
                     temp.setStatus(r.getStatus());
                 }
                 if(r.getLib()!= null){

@@ -10,29 +10,41 @@ import java.io.Serializable;
 public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     private String messageText;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Library lib;
 
     @ManyToOne
-    @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties("messages")
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
 
-    private Client client;
+     private Client client;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
         return messageText;
     }
 
-    public void setMessageText(String messagesText) {
-        this.messageText = messagesText;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
+    public Library getLib() {
+        return lib;
+    }
+
+    public void setLib(Library lib) {
+        this.lib = lib;
     }
 
     public Client getClient() {

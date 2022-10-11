@@ -22,11 +22,11 @@ public class MessageService {
     }
 
     public Message save(Message p){
-        if(p.getId()==null){
+        if(p.getIdMessage()==null){
             return messageRepository.save(p);
 
         }else {
-            Optional<Message> e = messageRepository.getMessage(p.getId());
+            Optional<Message> e = messageRepository.getMessage(p.getIdMessage());
             if (e.isPresent()){
                 return p;
             }else {
@@ -35,8 +35,8 @@ public class MessageService {
         }
     }
     public Message update(Message p){
-        if(p.getId()!=null){
-            Optional<Message> q = messageRepository.getMessage(p.getId());
+        if(p.getIdMessage()!=null){
+            Optional<Message> q = messageRepository.getMessage(p.getIdMessage());
             if (q.isPresent()){
                 if(p.getMessageText()!=null){
                     q.get().setMessageText(p.getMessageText());
