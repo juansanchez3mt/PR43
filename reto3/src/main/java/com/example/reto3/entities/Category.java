@@ -7,23 +7,26 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name= "client")
-public class Client implements Serializable {
+@Table(name= "category")
+public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idClient;
+    private Integer id;
     private String name;
-    private String email;
-    private Integer age;
-    private String password;
+    private String description;
 
-    public Integer getIdClient() {
-        return idClient;
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
+    @JsonIgnoreProperties("category")
+
+    private List<Library> libs;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdClient(Integer idClient) {
-        this.idClient = idClient;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,27 +37,19 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Integer getAge() {
-        return age;
+    public List<Library> getLibs() {
+        return libs;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLibs(List<Library> libs) {
+        this.libs = libs;
     }
 }

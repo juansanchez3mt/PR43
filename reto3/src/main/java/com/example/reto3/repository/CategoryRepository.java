@@ -1,6 +1,8 @@
 package com.example.reto3.repository;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Client;
+import com.example.reto3.repository.crudRepository.CategoryCrudRepository;
 import com.example.reto3.repository.crudRepository.ClientCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,24 +11,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ClientRepository {
+public class CategoryRepository {
 
     @Autowired
-    private ClientCrudRepository clientCrudRepository;
+    private CategoryCrudRepository categoryCrudRepository;
 
     //trae los objetos en la tabla
-    public List<Client> getAll(){
-        return (List<Client>) clientCrudRepository.findAll();
+    public List<Category> getAll(){
+        return (List<Category>) categoryCrudRepository.findAll();
     }
-    public Optional<Client> getClient(int id){
-        return clientCrudRepository.findById(id);
+    public Optional<Category> getCategory(int id){
+        return categoryCrudRepository.findById(id);
     }
     //guarda datos o los actualiza
-    public Client save(Client c){
-        return clientCrudRepository.save(c);
+    public Category save(Category c){
+        return categoryCrudRepository.save(c);
     }
     //borra datos
-    public void delete(Client c){
-        clientCrudRepository.delete(c);
+    public void delete(Category c){
+        categoryCrudRepository.delete(c);
     }
 }
