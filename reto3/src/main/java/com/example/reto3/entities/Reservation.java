@@ -20,10 +20,7 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "id")
     @JsonIgnoreProperties({"reservations"})
     private Library lib;
-    @ManyToOne
-    @JoinColumn(name = "idMessage")
-    @JsonIgnoreProperties({"lib","client"})
-    private Message messages;
+
     @ManyToOne
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"messages","reservations"})
@@ -71,13 +68,6 @@ public class Reservation implements Serializable {
         this.lib = lib;
     }
 
-    public Message getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Message messages) {
-        this.messages = messages;
-    }
 
     public Client getClient() {
         return client;

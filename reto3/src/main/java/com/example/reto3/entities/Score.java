@@ -11,8 +11,6 @@ public class Score implements Serializable {
     private Integer idScore;
     private Integer score;
 
-
-
     public Integer getIdScore() {
         return idScore;
     }
@@ -28,5 +26,4 @@ public class Score implements Serializable {
     public void setScore(Integer score) {
         this.score = score;
     }
-
 }

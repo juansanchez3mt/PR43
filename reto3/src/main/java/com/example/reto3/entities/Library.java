@@ -24,12 +24,13 @@ public class Library implements Serializable {
     private Category category;
 
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","client"})
     private List<Message> messages;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
+    @JsonIgnoreProperties("lib")
     private List<Reservation> reservations;
-
 
     public Integer getId() {
         return id;
@@ -71,11 +72,11 @@ public class Library implements Serializable {
         this.description = description;
     }
 
-    public Category getCategory() {
+    public com.example.reto3.entities.Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(com.example.reto3.entities.Category category) {
         this.category = category;
     }
 
@@ -87,11 +88,11 @@ public class Library implements Serializable {
         this.messages = messages;
     }
 
-    public List<Reservation> getReservations() {
+    public List<com.example.reto3.entities.Reservation> getReservations() {
         return reservations;
     }
 
-    public void setReservations(List<Reservation> reservations) {
+    public void setReservations(List<com.example.reto3.entities.Reservation> reservations) {
         this.reservations = reservations;
     }
 }
