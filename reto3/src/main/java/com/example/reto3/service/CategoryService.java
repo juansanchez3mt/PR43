@@ -1,9 +1,7 @@
 package com.example.reto3.service;
 
 import com.example.reto3.entities.Category;
-import com.example.reto3.entities.Client;
 import com.example.reto3.repository.CategoryRepository;
-import com.example.reto3.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

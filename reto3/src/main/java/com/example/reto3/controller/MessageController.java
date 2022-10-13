@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+<<<<<<< HEAD
 @RequestMapping("/api/Message")
+=======
+@RequestMapping("api/Message")
+>>>>>>> 7e6097a74f4c4d42389d5982489b175685156128
 public class MessageController {
     @Autowired
     private MessageService messageService;

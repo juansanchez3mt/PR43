@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name= "library")
@@ -19,8 +20,17 @@ public class Library implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("library")
+    @JsonIgnoreProperties("libs")
     private Category category;
+
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","client"})
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
+    @JsonIgnoreProperties("lib")
+    private List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -62,11 +72,27 @@ public class Library implements Serializable {
         this.description = description;
     }
 
-    public Category getCategory() {
+    public com.example.reto3.entities.Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(com.example.reto3.entities.Category category) {
         this.category = category;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<com.example.reto3.entities.Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<com.example.reto3.entities.Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

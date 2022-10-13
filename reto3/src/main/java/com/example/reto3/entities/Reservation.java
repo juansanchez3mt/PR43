@@ -1,5 +1,7 @@
 package com.example.reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,11 +12,24 @@ public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
-    private Date starDate;
+    private Date startDate;
     private Date devolutionDate;
     private String status;
+<<<<<<< HEAD
     private Library lib;
+=======
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    @JsonIgnoreProperties({"reservations"})
+    private Library lib;
+
+    @ManyToOne
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+>>>>>>> 7e6097a74f4c4d42389d5982489b175685156128
     private Client client;
+
     private Score score;
 
     public Integer getIdReservation() {
@@ -25,12 +40,12 @@ public class Reservation implements Serializable {
         this.idReservation = idReservation;
     }
 
-    public Date getStarDate() {
-        return starDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStarDate(Date starDate) {
-        this.starDate = starDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Date getDevolutionDate() {
@@ -56,6 +71,7 @@ public class Reservation implements Serializable {
     public void setLib(Library lib) {
         this.lib = lib;
     }
+
 
     public Client getClient() {
         return client;
