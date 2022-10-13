@@ -1,9 +1,7 @@
 package com.example.reto3.controller;
 
 import com.example.reto3.entities.Category;
-import com.example.reto3.entities.Client;
 import com.example.reto3.service.CategoryService;
-import com.example.reto3.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

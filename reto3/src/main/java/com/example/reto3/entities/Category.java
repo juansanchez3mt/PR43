@@ -13,12 +13,13 @@ public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
     private String description;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
     @JsonIgnoreProperties("category")
-
     private List<Library> libs;
 
     public Integer getId() {

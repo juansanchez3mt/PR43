@@ -3,7 +3,6 @@ package com.example.reto3.repository;
 import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Client;
 import com.example.reto3.repository.crudRepository.CategoryCrudRepository;
-import com.example.reto3.repository.crudRepository.ClientCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
