@@ -3,13 +3,13 @@ $("document").ready(function (){
 });
 function getLibrary(){
     $.ajax({
-        url: "/api/Library/all",
+        url: "api/Lib/all",
         type: 'GET',
         dataType: 'json',
         success: function (library){
             $("#library").empty();
             for(i= 0; i< library.length; i++){
-                $("#library").append(library[i].idLibrary+ " "+ library[i].name+ " "+ library[i].target+ " "+ library[i].capacity+ " "+ library[i].description+ " "+ library[i].category+ " <button onclick='getDetailLibrary("+library[i].idLibrary+")'>Seleccionar</button><button onclick='deleteLibrary("+library[i].idLibrary+")'>Borrar</button><br>");
+                $("#library").append(library[i].id+ " "+ library[i].name+ " "+ library[i].target+ " "+ library[i].capacity+ " "+ library[i].description+ /*" "+ category[i].id+*/ " <button onclick='getDetailLibrary("+library[i].idLibrary+")'>Seleccionar</button><button onclick='deleteLibrary("+library[i].idLibrary+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -19,7 +19,7 @@ function getLibrary(){
 }
 function getLibraryInfo(){
     let data={
-        idLibrary: $("#libraryIdLibrary").val(),
+        id: $("#libraryId").val(),
         name: $("#libraryName").val(),
         target: $("#libraryTarget").val(),
         capacity: $("#libraryCapacity").val(),
@@ -32,7 +32,7 @@ function getLibraryInfo(){
 }
 function cleanLibraryInfo(){
     let data={
-        idLibrary: $("#libraryIdLibrary").val(""),
+        id: $("#libraryId").val(""),
         name: $("#libraryName").val(""),
         target: $("#libraryTarget").val(""),
         capacity: $("#libraryCapacity").val(""),
@@ -45,7 +45,7 @@ function cleanLibraryInfo(){
 }
 function saveLibrary(){
     $.ajax({
-        url: "api/Library/save",
+        url: "api/Lib/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
@@ -62,18 +62,18 @@ function saveLibrary(){
 }
 function getDetailLibrary(idLibrary){
     $.ajax({
-        url: "api/Library/all",
+        url: "api/Lib/all",
         type: 'GET',
         dataType: 'json',
         success: function (library){
             let data= {
-                idLibrary: $("#libraryIdLibrary").val(library[0].idLibrary),
+                id: $("#libraryId").val(library[0].id),
                 name: $("#libraryName").val(library[0].name),
                 target: $("#libraryTarget").val(library[0].target),
                 capacity: $("#libraryCapacity").val(library[0].capacity),
                 description: $("#libraryDescription").val(library[0].description),
                 category: {
-                    id: $("#category option:selected").val(library[0].category)
+                    id: $("#category option:selected").val(category[0].category)
                 }
             }
         },

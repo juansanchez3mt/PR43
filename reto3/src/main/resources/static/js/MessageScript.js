@@ -3,7 +3,7 @@ $("document").ready(function (){
 });
 function getMessage(){
     $.ajax({
-        url: "/api/Message/all",
+        url: "api/Message/all",
         type: 'GET',
         dataType: 'json',
         success: function (message){

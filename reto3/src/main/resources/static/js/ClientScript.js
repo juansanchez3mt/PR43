@@ -3,7 +3,7 @@ $("document").ready(function (){
 });
 function getClient(){
     $.ajax({
-        url: "/api/Client/all",
+        url: "api/Client/all",
         type: 'GET',
         dataType: 'json',
         success: function(client){

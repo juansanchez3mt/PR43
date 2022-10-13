@@ -3,7 +3,7 @@ $("document").ready(function (){
 });
 function getScore(){
     $.ajax({
-        url: "/api/Score/all",
+        url: "api/Score/all",
         type: 'GET',
         dataType: 'json',
         success: function (score){

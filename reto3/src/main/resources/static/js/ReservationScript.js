@@ -3,7 +3,7 @@ $("document").ready(function (){
 });
 function getReservation(){
     $.ajax({
-        url: "/api/Message/all",
+        url: "api/Message/all",
         type: 'GET',
         dataType: 'json',
         success: function (reservation){

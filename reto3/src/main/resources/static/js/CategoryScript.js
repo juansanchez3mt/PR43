@@ -3,13 +3,13 @@ $("document").ready(function (){
 });
 function getCategory(){
     $.ajax({
-        url: "/api/Category/all",
+        url: "api/Category/all",
         type: 'GET',
         dataType: 'json',
         success: function (category){
             $("#category").empty();
             for(i= 0; i< category.length; i++){
-                $("#category").append(category[i].idCategory+ " "+ category[i].name+ " "+ category[i].description+ " <button onclick='getDetailCategory("+category[i].idCategory+")'>Seleccionar</button><button onclick='deleteCategory("+category[i].idCategory+")'>Borrar</button><br>");
+                $("#category").append(category[i].id+ " "+ category[i].name+ " "+ category[i].description+ " <button onclick='getDetailCategory("+category[i].id+")'>Seleccionar</button><button onclick='deleteCategory("+category[i].id+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -19,7 +19,7 @@ function getCategory(){
 }
 function getCategoryinfo(){
     let data={
-        idCategory: $("#categoryIdCategory").val(),
+        id: $("#categoryId").val(),
         name: $("#categoryName").val(),
         description: $("#categoryDescription").val()
     }
@@ -27,7 +27,7 @@ function getCategoryinfo(){
 }
 function cleanCategoryInfo(){
     let data={
-        idCategory: $("#categoryIdCategory").val(""),
+        id: $("#categoryId").val(""),
         name: $("#categoryName").val(""),
         description: $("#categoryDescription").val("")
     }
@@ -51,14 +51,14 @@ function saveCategory(){
         }
     });
 }
-function getDetailCategory(idCategory){
+function getDetailCategory(id){
     $.ajax({
         url: "api/Category/all",
         type: 'GET',
         dataType: 'json',
         success: function (category){
             let data={
-                idCategory: $("#categoryIdCategory").val(category[0].idCategory),
+                id: $("#categoryId").val(category[0].id),
                 name: $("#categoryName").val(category[0].name),
                 description: $("#categoryDescription").val(category[0].description)
             }

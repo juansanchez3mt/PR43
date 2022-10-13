@@ -12,8 +12,15 @@
 <label for="reservationStartDate">Fecha: </label><input id="reservationStartDate" type="date"><br>
 <label for="reservationDevolutionDate">Fecha de devolución: </label><input id="reservationDevolutionDate" type="date"><br>
 <label for="reservationStatus">Estado: </label><input id="reservationStatus" type="text"><br>
-<label for="reservationLib">Librería: </label><input id="reservationLib" type="text"><br>
-<label for="reservationClient">Cliente: </label><input id="reservationClient" type="text"><br>
+<label for="library">Librería: </label><select id="library">
+    <option value="1"> Librería 1 </option>
+</select><br>
+<label for="client">Cliente: </label><select id="client">
+    <option value="1"> Cliente 1 </option>
+</select><br>
+<label for="score">Puntaje: </label><select id="score">
+    <option value="1"> Puntaje 1 </option>
+</select><br>
 <button onclick="getReservation()">Ver</button><button onclick="saveReservation()">Guardar</button><button onclick="updateReservation">Actualizar</button><button onclick="deleteReservation()">Borrar</button>
 <div id="reservation"></div>
 </body>
