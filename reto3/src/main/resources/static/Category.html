@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/CategoryScript.js"></script>
+<script type="text/javascript" src="js/LibraryScript.js"></script>
+<body>
+<h1>CATEGORIA</h1>
+<label for="categoryIdCategory">Id: </label><input id="categoryIdCategory" type="number"><br>
+<label for="categoryName">Nombre: </label><input type="text" id="categoryName"><br>
+<label for="categoryDescription">Descripción: </label><input type="text" id="categoryDescription"><br>
+<button onclick="getCategory()">Ver</button><button onclick="saveCategory()">Guardar</button><button onclick="updateCategory()">Actualizar</button><button onclick="deleteCategory()">Borrar</button>
+<div id="category"></div>
+</body>
+</html>

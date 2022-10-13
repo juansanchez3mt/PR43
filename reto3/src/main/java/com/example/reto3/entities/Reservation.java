@@ -13,7 +13,7 @@ public class Reservation implements Serializable {
     private Date starDate;
     private Date devolutionDate;
     private String status;
-    private Lib lib;
+    private Library lib;
     private Client client;
     private Score score;
 
@@ -49,11 +49,11 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
-    public Lib getLib() {
+    public Library getLib() {
         return lib;
     }
 
-    public void setLib(Lib lib) {
+    public void setLib(Library lib) {
         this.lib = lib;
     }
 

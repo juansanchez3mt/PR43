@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ReservationScript.js"></script>
+<body>
+<h1>RESERVACIÓN</h1>
+<label for="reservationIdReservation">Id: </label><input id="reservationIdReservation" type="number"><br>
+<label for="reservationStartDate">Fecha: </label><input id="reservationStartDate" type="date"><br>
+<label for="reservationDevolutionDate">Fecha de devolución: </label><input id="reservationDevolutionDate" type="date"><br>
+<label for="reservationStatus">Estado: </label><input id="reservationStatus" type="text"><br>
+<label for="reservationLib">Librería: </label><input id="reservationLib" type="text"><br>
+<label for="reservationClient">Cliente: </label><input id="reservationClient" type="text"><br>
+<button onclick="getReservation()">Ver</button><button onclick="saveReservation()">Guardar</button><button onclick="updateReservation">Actualizar</button><button onclick="deleteReservation()">Borrar</button>
+<div id="reservation"></div>
+</body>
+</html>

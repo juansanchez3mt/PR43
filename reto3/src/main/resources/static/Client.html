@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ClientScript.js"></script>
+<script type="text/javascript" src="js/MessageScript.js"></script>
+<script type="text/javascript" src="js/ReservationScript.js"></script>
+<body>
+<h1>CLIENTE</h1>
+<label for="clientIdClient">Id: </label><input id="clientIdClient" type="number"><br>
+<label for="clientName">Nombre: </label><input id="clientName" type="text"><br>
+<label for="clientEmail">Correo: </label><input id="clientEmail" type="email"><br>
+<label for="clientAge">Edad: </label><input id="clientAge" type="number"><br>
+<label for="clientPassword">Contraseña: </label><input id="clientPassword" type="password"><br>
+<button onclick="getClient()">Ver</button><button onclick="saveClient()">Guardar</button><button onclick="updateClient()">Actualizar</button><button onclick="deleteClient()">Borrar</button>
+<div id="client"></div>
+</body>
+</html>
