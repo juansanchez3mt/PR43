@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/MessageScript.js"></script>
+<body>
+<h1>MENSAJE</h1>
+<label for="messageIdMessage">Id: </label><input id="messageIdMessage" type="number"><br>
+<label for="messageMessageText">Mensaje: </label><input id="messageMessageText" type="text"><br>
+<label for="messageLib">Libreria: </label><input id="messageLib" type="text"><br>
+<label for="messageClient">Cliente: </label><input id="messageClient" type="text"><br>
+<button onclick="getMessage()">Ver</button><button onclick="saveMessage()">Guardar</button><button onclick="updateMessage()">Actualizar</button><button onclick="deleteMessage()">Borrar</button>
+<div id="message"></div>
+</body>
+</html>
