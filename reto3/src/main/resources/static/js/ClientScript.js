@@ -9,7 +9,7 @@ function getClient(){
         success: function(client){
             $("#client").empty();
             for(i= 0; i< client.length; i++){
-                $("#client").append(client[i].idClient+ " "+ client[i].name+ " "+ client[i].age+ " "+ client[i].email+ " <button onclick='getDetailClient("+client[i].idClient+")'>Seleccionar</button><button onclick='deleteClient("+client[i].idClient+")'>Borrar</button><br>");
+                $("#client").append("<option value='"+client[i].idClient+"'>"+client[i].idClient+ " "+ client[i].name+ " "+ client[i].age+ " "+ client[i].email+ "</option><button onclick='getDetailClient("+client[i].idClient+")'>Seleccionar</button><button onclick='deleteClient("+client[i].idClient+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -39,7 +39,7 @@ function cleanClientInfo(){
 }
 function saveClient(){
     $.ajax({
-        url: "/api/Client/save",
+        url: "api/Client/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',

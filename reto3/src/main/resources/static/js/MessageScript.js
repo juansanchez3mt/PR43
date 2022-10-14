@@ -1,5 +1,7 @@
 $("document").ready(function (){
     getMessage();
+    getLibs();
+    getClient();
 });
 function getMessage(){
     $.ajax({
@@ -9,7 +11,7 @@ function getMessage(){
         success: function (message){
             $("#message").empty();
             for(i= 0; i< message.length; i++){
-                $("#message").append(message[i].idMessage+ " "+ message[i].messageText+ " "+ message[i].lib+ " "+message[i].client+ " <button onclick='getDetailMessage("+message[i].idMessage+")'>Seleccionar</<button><button onclick='deleteMessage("+message[i].idMessage+")'>Borrar</button><br>");
+                $("#message").append(message[i].idMessage+ " "+ message[i].messageText+ " "+ message[i].libs+ " "+message[i].client+ " <button onclick='getDetailMessage("+message[i].idMessage+")'>Seleccionar</<button><button onclick='deleteMessage("+message[i].idMessage+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -20,29 +22,37 @@ function getMessage(){
 function getMessageInfo(){
     let data={
         idMessage: $("#messageIdMessage").val(),
-        messageText: $("#messageMessageText").val()/*,
-        lib: $("#messageLib").val(),
-        client: $("#messageClient").val()*/
+        messageText: $("#messageMessageText").val(),
+        libs:{
+            id: $("#libs option:selected").val()
+        },
+        client:{
+            id: $("#client option:selected").val()
+        }
     }
     return data;
 }
 function cleanMessageInfo(){
     let data={
         idMessage: $("#messageIdMessage").val(""),
-        messageText: $("#messageMessageText").val("")/*,
-        lib: $("#messageLib").val(""),
-        client: $("#messageClient").val("")*/
+        messageText: $("#messageMessageText").val(""),
+        libs:{
+            id: $("#libs option:selected").val("")
+        },
+        client:{
+            id: $("#client option:selected").val("")
+        }
     }
     return data;
 }
 function saveMessage(){
     $.ajax({
-        url: "/api/Message/save",
+        url: "api/Message/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
         data: JSON.stringify(getMessageInfo()),
-        success: function (Message){
+        success: function (message){
             getMessage();
             console.log(getMessageInfo());
             cleanMessageInfo();
@@ -60,9 +70,13 @@ function getDetailMessage(idMessage){
         success: function (message){
             let data={
                 idMessage: $("#messageIdMessage").val(message[0].idMessage),
-                messageText: $("#messageMessageText").val(message[0].messageText)/*,
-                lib: $("#messageLib").val(message[0].lib),
-                client: $("#messageClient").val(message[0].client)*/
+                messageText: $("#messageMessageText").val(message[0].messageText),
+                libs:{
+                    id: $("#libs option:selected").val(message[0].libs)
+                },
+                client:{
+                    id: $("#client option:selected").val(message[0].client)
+                }
             }
         },
         error: function(xhr, status){
