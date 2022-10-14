@@ -15,11 +15,13 @@ public class Reservation implements Serializable {
     private Date startDate;
     private Date devolutionDate;
     private String status;
+    private Library lib;
+
 
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties({"reservations"})
-    private Library lib;
+    private Library libs;
 
     @ManyToOne
     @JoinColumn(name = "idClient")
