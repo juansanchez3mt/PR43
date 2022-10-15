@@ -1,4 +1,4 @@
-package com.example.reto3.services;
+package com.example.reto3.service;
 
 import com.example.reto3.entities.Reservation;
 import com.example.reto3.repository.ReservationRepository;
@@ -45,9 +45,6 @@ public class ReservationService {
                 }
                 if(r.getStatus() == null){
                     temp.setStatus(r.getStatus());
-                }
-                if(r.getLib()!= null){
-                    temp.setLib(r.getLib());
                 }
                 if(r.getClient()!= null){
                     temp.setClient(r.getClient());

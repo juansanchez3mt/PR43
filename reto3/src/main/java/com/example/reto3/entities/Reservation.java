@@ -15,19 +15,20 @@ public class Reservation implements Serializable {
     private Date startDate;
     private Date devolutionDate;
     private String status;
-    private Library lib;
+    //private Library lib;
 
 
     @ManyToOne
     @JoinColumn(name = "id")
     @JsonIgnoreProperties({"reservations"})
-    private Library libs;
+    private Library lib;
 
     @ManyToOne
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
 
+    @OneToOne
     private Score score;
 
     public Integer getIdReservation() {

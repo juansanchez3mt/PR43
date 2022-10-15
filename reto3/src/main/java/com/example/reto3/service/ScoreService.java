@@ -1,4 +1,4 @@
-package com.example.reto3.services;
+package com.example.reto3.service;
 
 import com.example.reto3.entities.Score;
 import com.example.reto3.repository.ScoreRepository;
