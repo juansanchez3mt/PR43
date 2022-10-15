@@ -64,3 +64,20 @@ function getDetailScore(idScore){
         }
     });
 }
+function deleteScore(idScore){
+    $.ajax({
+        url: "api/Score/"+idScore,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({id: idScore}),
+        success: function (score){
+            getScore();
+            console.log({id: idScore});
+            cleanScoreInfo();
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}

@@ -2,7 +2,7 @@ $("document").ready(function (){
     getReservations();
     getLibs();
     getClients();
-    getScores();
+    getScore();
 });
 function getReservations(){
     $.ajax({
@@ -94,6 +94,23 @@ function getDetailReservations(idReservation){
                     id: $("#scores option:selected").val(reservations[0].scores)
                 }
             }
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
+function deleteReservations(idReservation){
+    $.ajax({
+        url: "api/Reservation/"+idReservation,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({id: idReservation}),
+        success: function (reservations){
+            getReservations();
+            console.log({id: idReservation});
+            cleanReservationsInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
