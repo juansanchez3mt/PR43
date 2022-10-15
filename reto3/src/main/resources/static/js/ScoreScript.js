@@ -1,15 +1,15 @@
 $("document").ready(function (){
-    getScores();
+    getScore();
 });
-function getScores(){
+function getScore(){
     $.ajax({
         url: "api/Score/all",
         type: 'GET',
         dataType: 'json',
-        success: function (scores){
-            $("#scores").empty();
-            for(i= 0; i< scores.length; i++){
-                $("#scores").append("<option value='"+scores[i].idScore+"'>"+scores[i].idScore+ " "+scores[i].score+ "</option><button onclick='getDetailScores("+scores[i].idScore+")'>Seleccionar</<button><button onclick='deleteScores("+scores[i].idScore+")'>Borrar</button><br>");
+        success: function (score){
+            $("#score").empty();
+            for(i= 0; i< score.length; i++){
+                $("#score").append("<option value='"+score[i].idScore+"'>"+score[i].idScore+ " "+score[i].score+ "</option><button onclick='getDetailScore("+score[i].idScore+")'>Seleccionar</<button><button onclick='deleteScore("+score[i].idScore+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -17,46 +17,46 @@ function getScores(){
         }
     });
 }
-function getScoresInfo(){
+function getScoreInfo(){
     let data={
-        idScore: $("#scoresIdScore").val(),
-        score: $("#scoresScore").val()
+        idScore: $("#scoreIdScore").val(),
+        score: $("#scoreScore").val()
     }
     return data;
 }
-function cleanScoresInfo(){
+function cleanScoreInfo(){
     let data={
         idScore: $("#scoreIdScore").val(""),
         score: $("#scoreScore").val("")
     }
     return data;
 }
-function saveScores(){
+function saveScore(){
     $.ajax({
         url: "api/Score/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify(getScoresInfo()),
+        data: JSON.stringify(getScoreInfo()),
         success: function (Score){
-            getScores();
-            console.log(getScoresInfo());
-            cleanScoresInfo();
+            getScore();
+            console.log(getScoreInfo());
+            cleanScoreInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
         }
     });
 }
-function getDetailScores(idScore){
+function getDetailScore(idScore){
     $.ajax({
         url: "api/Score/all",
         type: 'GET',
         dataType: 'json',
-        success: function (scores){
+        success: function (score){
             let data={
-                idScore: $("#scoresIdScore").val(scores[0].idScore),
-                score: $("#scoresScore").val(scores[0].score)
+                idScore: $("#scoreIdScore").val(score[0].idScore),
+                score: $("#scoreScore").val(score[0].score)
             }
         },
         error: function(xhr, status){

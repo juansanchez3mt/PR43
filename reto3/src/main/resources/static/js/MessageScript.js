@@ -40,7 +40,7 @@ function cleanMessagesInfo(){
             id: $("#libs option:selected").val("")
         },
         clients:{
-            idClient: $("#clients option:selected").val("")
+            id: $("#clients option:selected").val("")
         }
     }
     return data;
@@ -75,7 +75,7 @@ function getDetailMessages(idMessage){
                     id: $("#libs option:selected").val(messages[0].libs)
                 },
                 clients:{
-                    idClient: $("#clients option:selected").val(messages[0].clients)
+                    id: $("#clients option:selected").val(messages[0].clients)
                 }
             }
         },
