@@ -11,8 +11,7 @@ public class Score implements Serializable {
     private Integer idScore;
     private Integer score;
 
-    @OneToOne
-    @JoinColumn (name = "idScore")
+    @OneToOne (mappedBy = "score")
     private Reservation reservations;
 
     public Integer getIdScore() {

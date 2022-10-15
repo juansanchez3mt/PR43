@@ -15,7 +15,6 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
     public List<Client> getAll(){
         return clientService.getAll();
     }

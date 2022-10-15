@@ -15,7 +15,6 @@ public class LibraryController {
     private LibraryService libraryService;
 
     @GetMapping("/all")
-    @ResponseStatus(HttpStatus.CREATED)
     public List<Library> getAll(){
         return libraryService.getAll();
     }
