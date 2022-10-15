@@ -1,7 +1,8 @@
-package com.example.reto3.services;
+package com.example.reto3.service;
 
 import com.example.reto3.entities.Score;
 import com.example.reto3.repository.ScoreRepository;
+import com.fasterxml.jackson.databind.JsonSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
