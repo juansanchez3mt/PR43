@@ -1,7 +1,5 @@
 package com.example.reto3.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,7 +12,7 @@ public class Score implements Serializable {
     private Integer score;
 
     @OneToOne
-    @JsonIgnoreProperties("score")
+    @JoinColumn (name = "idScore")
     private Reservation reservations;
 
     public Integer getIdScore() {
