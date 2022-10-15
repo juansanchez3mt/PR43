@@ -9,7 +9,7 @@ function getCategory(){
         success: function (category){
             $("#category").empty();
             for(i= 0; i< category.length; i++){
-                $("#category").append("<option value='"+category[i].id+"'>"+category[i].id+ " "+ category[i].name+ " "+ category[i].description+ "</option><button onclick='getDetailCategory("+category[i].id+")'>Seleccionar</button><button onclick='deleteCategory("+category[i].id+")'>Borrar</button><br>");
+                $("#category").append("<option value='"+category[i].id+"'>"+ category[i].id+ " "+ category[i].name+ " "+ category[i].description+ "</option><button onclick='getDetailCategory("+category[i].id+")'>Seleccionar</button><button onclick='deleteCategory("+category[i].id+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -21,10 +21,7 @@ function getCategoryinfo(){
     let data={
         id: $("#categoryId").val(),
         name: $("#categoryName").val(),
-        description: $("#categoryDescription").val(),
-        libs:{
-            id: $("#libs option:selected").val()
-        }
+        description: $("#categoryDescription").val()
     }
     return data;
 }
@@ -32,10 +29,7 @@ function cleanCategoryInfo(){
     let data={
         id: $("#categoryId").val(""),
         name: $("#categoryName").val(""),
-        description: $("#categoryDescription").val(""),
-        libs:{
-            id: $("#libs option:selected").val("")
-        }
+        description: $("#categoryDescription").val("")
     }
     return data;
 }
@@ -45,10 +39,10 @@ function saveCategory(){
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify(getCategory()),
-        success: function (client){
+        data: JSON.stringify(getCategoryinfo()),
+        success: function (category){
             getCategory();
-            console.log(getCategory());
+            console.log(getCategoryinfo());
             cleanCategoryInfo();
         },
         error: function(xhr, status){
@@ -65,10 +59,7 @@ function getDetailCategory(id){
             let data={
                 id: $("#categoryId").val(category[0].id),
                 name: $("#categoryName").val(category[0].name),
-                description: $("#categoryDescription").val(category[0].description),
-                libs:{
-                    id: $("#libs option:selected").val(category[0].libs)
-                }
+                description: $("#categoryDescription").val(category[0].description)
             }
         },
         error: function(xhr, status){

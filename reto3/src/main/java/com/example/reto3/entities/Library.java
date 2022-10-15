@@ -17,17 +17,13 @@ public class Library implements Serializable {
     private String target;
     private Integer capacity;
     private String description;
-
     @ManyToOne
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties("libs")
     private Category category;
-
-
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
     @JsonIgnoreProperties({"lib","client"})
     private List<Message> messages;
-
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "lib")
     @JsonIgnoreProperties("lib")
     private List<Reservation> reservations;
