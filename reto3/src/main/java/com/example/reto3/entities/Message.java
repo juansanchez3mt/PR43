@@ -16,11 +16,9 @@ public class Message implements Serializable {
     @JoinColumn(name = "libId")
     @JsonIgnoreProperties({"messages","reservations"})
     private Library lib;
-
     @ManyToOne
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"messages","reservations"})
-
      private Client client;
 
     public Integer getIdMessage() {
