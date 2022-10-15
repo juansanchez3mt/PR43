@@ -70,7 +70,6 @@ public class Reservation implements Serializable {
         this.lib = lib;
     }
 
-
     public Client getClient() {
         return client;
     }
