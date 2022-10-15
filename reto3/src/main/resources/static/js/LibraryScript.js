@@ -83,3 +83,20 @@ function getDetailLibs(id){
         }
     });
 }
+function deleteLibs(id){
+    $.ajax({
+        url: "api/lib/"+id,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({id: id}),
+        success: function (libs){
+            getLibs();
+            console.log({id: id});
+            cleanLibsInfo();
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}

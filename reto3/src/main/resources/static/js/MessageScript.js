@@ -84,3 +84,20 @@ function getDetailMessages(idMessage){
         }
     });
 }
+function deleteMessages(idMessage){
+    $.ajax({
+        url: "api/Message/"+idMessage,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({id: idMessage}),
+        success: function (messages){
+            getMessages();
+            console.log({id: idMessage});
+            cleanMessagesInfo();
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
