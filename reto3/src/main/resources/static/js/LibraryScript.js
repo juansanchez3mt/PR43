@@ -1,5 +1,6 @@
 $("document").ready(function (){
     getLibs();
+    //getCategory();
 });
 function getLibs(){
     $.ajax({
@@ -9,7 +10,7 @@ function getLibs(){
         success: function (libs){
             $("#libs").empty();
             for(i= 0; i< libs.length; i++){
-                $("#libs").append("<option value='"+libs[i].id+"'>"+libs[i].id+ " "+ libs[i].name+ " "+ libs[i].target+ " "+ libs[i].capacity+ " "+ libs[i].description+ " "+ libs[i].category+ "</option><button onclick='getDetailLibs("+libs[i].id+")'>Seleccionar</button><button onclick='deleteLibs("+libs[i].id+")'>Borrar</button><br>");
+                $("#libs").append("<option value='"+libs[i].id+"'>"+ libs[i].id+ " "+ libs[i].name+ " "+ libs[i].target+ " "+ libs[i].capacity+ " "+ libs[i].description+ " "+ libs[i].category+ "</option><button onclick='getDetailLibs("+libs[i].id+")'>Seleccionar</button><button onclick='deleteLibs("+libs[i].id+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){

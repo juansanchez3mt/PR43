@@ -1,17 +1,17 @@
 $("document").ready(function (){
-    getMessage();
+    getMessages();
     getLibs();
-    getClient();
+    getClients();
 });
-function getMessage(){
+function getMessages(){
     $.ajax({
         url: "api/Message/all",
         type: 'GET',
         dataType: 'json',
-        success: function (message){
-            $("#message").empty();
-            for(i= 0; i< message.length; i++){
-                $("#message").append(message[i].idMessage+ " "+ message[i].messageText+ " "+ message[i].libs+ " "+message[i].client+ " <button onclick='getDetailMessage("+message[i].idMessage+")'>Seleccionar</<button><button onclick='deleteMessage("+message[i].idMessage+")'>Borrar</button><br>");
+        success: function (messages){
+            $("#messages").empty();
+            for(i= 0; i< messages.length; i++){
+                $("#messages").append("<option value='"+messages[i].idMessage+"'>"+ messages[i].idMessage+ " "+ messages[i].messageText+ " "+ messages[i].libs+ " "+messages[i].clients+ "</option><button onclick='getDetailMessages("+messages[i].idMessage+")'>Seleccionar</<button><button onclick='deleteMessages("+messages[i].idMessage+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -19,63 +19,63 @@ function getMessage(){
         }
     });
 }
-function getMessageInfo(){
+function getMessagesInfo(){
     let data={
-        idMessage: $("#messageIdMessage").val(),
-        messageText: $("#messageMessageText").val(),
+        idMessage: $("#messagesIdMessage").val(),
+        messageText: $("#messagesMessageText").val(),
         libs:{
             id: $("#libs option:selected").val()
         },
-        client:{
-            id: $("#client option:selected").val()
+        clients:{
+            idClient: $("#clients option:selected").val()
         }
     }
     return data;
 }
-function cleanMessageInfo(){
+function cleanMessagesInfo(){
     let data={
-        idMessage: $("#messageIdMessage").val(""),
-        messageText: $("#messageMessageText").val(""),
+        idMessage: $("#messagesIdMessage").val(""),
+        messageText: $("#messagesMessageText").val(""),
         libs:{
             id: $("#libs option:selected").val("")
         },
-        client:{
-            id: $("#client option:selected").val("")
+        clients:{
+            id: $("#clients option:selected").val("")
         }
     }
     return data;
 }
-function saveMessage(){
+function saveMessages(){
     $.ajax({
         url: "api/Message/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify(getMessageInfo()),
-        success: function (message){
-            getMessage();
-            console.log(getMessageInfo());
-            cleanMessageInfo();
+        data: JSON.stringify(getMessagesInfo()),
+        success: function (messages){
+            getMessages();
+            console.log(getMessagesInfo());
+            cleanMessagesInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
         }
     });
 }
-function getDetailMessage(idMessage){
+function getDetailMessages(idMessage){
     $.ajax({
         url: "api/Message/all",
         type: 'GET',
         dataType: 'json',
-        success: function (message){
+        success: function (messages){
             let data={
-                idMessage: $("#messageIdMessage").val(message[0].idMessage),
-                messageText: $("#messageMessageText").val(message[0].messageText),
+                idMessage: $("#messagesIdMessage").val(messages[0].idMessage),
+                messageText: $("#messagesMessageText").val(messages[0].messageText),
                 libs:{
-                    id: $("#libs option:selected").val(message[0].libs)
+                    id: $("#libs option:selected").val(messages[0].libs)
                 },
-                client:{
-                    id: $("#client option:selected").val(message[0].client)
+                clients:{
+                    id: $("#clients option:selected").val(messages[0].clients)
                 }
             }
         },

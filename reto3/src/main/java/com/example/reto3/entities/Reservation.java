@@ -15,19 +15,28 @@ public class Reservation implements Serializable {
     private Date startDate;
     private Date devolutionDate;
     private String status;
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "libid")
     @JsonIgnoreProperties({"reservations"})
     private Library lib;
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
     @ManyToOne
-    @JoinColumn(name = "idClient")
+    @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"messages","reservations"})
     private Client client;
+<<<<<<< HEAD
+=======
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "scoreId")
+>>>>>>> main
     private Score score;
 
     public Integer getIdReservation() {
