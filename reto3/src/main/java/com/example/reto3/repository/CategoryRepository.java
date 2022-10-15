@@ -19,7 +19,7 @@ public class CategoryRepository {
     public List<Category> getAll(){
         return (List<Category>) categoryCrudRepository.findAll();
     }
-    public Optional<Category> getCategory(int id){
+    public Optional<Category> getById(int id){
         return categoryCrudRepository.findById(id);
     }
     //guarda datos o los actualiza

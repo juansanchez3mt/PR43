@@ -1,5 +1,6 @@
 package com.example.reto3.repository;
 
+import com.example.reto3.entities.Reservation;
 import com.example.reto3.entities.Score;
 import com.example.reto3.repository.crudRepository.ScoreCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,8 @@ public class ScoreRepository {
     public Score save(Score s){
         return scoreCrudRepository.save(s);
     }
-    public Optional<Score> getById(int id){
-        return scoreCrudRepository.findById(id);
+    public Optional<Score> getById(int idScore){
+        return scoreCrudRepository.findById(idScore);
     }
+    public void delete(Score s){ scoreCrudRepository.delete(s); }
 }

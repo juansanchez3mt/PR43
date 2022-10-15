@@ -19,8 +19,6 @@ public class ReservationService {
         if(r.getIdReservation()== null){
             r.setStatus("created");
             return reservationRepository.save(r);
-
-
         }
         else{
             Optional<Reservation> st= reservationRepository.getById(r.getIdReservation());
@@ -53,5 +51,14 @@ public class ReservationService {
             }
         }
         return r;
+    }
+    public boolean delete(int idReservation){
+        Optional<Reservation> r= reservationRepository.getById(idReservation);
+        if (r.isPresent()){
+            reservationRepository.delete(r.get());
+            return true;
+        }else{
+            return false;
+        }
     }
 }

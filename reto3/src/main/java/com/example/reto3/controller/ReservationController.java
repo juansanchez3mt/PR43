@@ -1,5 +1,6 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.Library;
 import com.example.reto3.entities.Reservation;
 
 import com.example.reto3.service.ReservationService;
@@ -28,4 +29,6 @@ public class ReservationController {
     public Reservation update(@RequestBody Reservation r){
         return reservationService.update(r);
     }
+    @DeleteMapping("/{idReservation}")
+    public boolean delete(@PathVariable("idReservation") int idReservation){return reservationService.delete(idReservation);}
 }

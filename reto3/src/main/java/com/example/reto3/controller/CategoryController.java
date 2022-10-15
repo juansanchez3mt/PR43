@@ -23,5 +23,9 @@ public class CategoryController {
     public Category save(@RequestBody Category c){
         return categoryService.save(c);
     }
-
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category update(@RequestBody Category c){return categoryService.update(c);}
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){return categoryService.delete(id);}
 }

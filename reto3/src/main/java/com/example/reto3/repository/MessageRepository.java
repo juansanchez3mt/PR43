@@ -18,14 +18,15 @@ public class MessageRepository {
     public List<Message> getAll(){
         return (List<Message>) messageCrudRepository.findAll();
     }
-    public Optional<Message> getMessage(int id){
-        return messageCrudRepository.findById(id);
+    public Optional<Message> getById(int idMessage){
+        return messageCrudRepository.findById(idMessage);
     }
 
     //guarda datos o los actualiza
     public Message save(Message p){
         return messageCrudRepository.save(p);
     }
+
     //borra datos
     public void delete(Message p){
         messageCrudRepository.delete(p);
