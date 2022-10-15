@@ -18,7 +18,7 @@ public class LibraryRepository {
     public List<Library> getAll(){
         return (List<Library>) libraryCrudRepository.findAll();
     }
-    public Optional<Library> getLibrary(int id){
+    public Optional<Library> getById(int id){
         return libraryCrudRepository.findById(id);
     }
     //guarda datos o los actualiza

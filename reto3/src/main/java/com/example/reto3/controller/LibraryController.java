@@ -1,5 +1,6 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.Client;
 import com.example.reto3.entities.Library;
 import com.example.reto3.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,9 @@ public class LibraryController {
     public Library save(@RequestBody Library c){
         return libraryService.save(c);
     }
-
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Library update(@RequestBody Library c){return libraryService.update(c);}
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id){return libraryService.delete(id);}
 }

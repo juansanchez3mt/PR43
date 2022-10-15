@@ -1,5 +1,7 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.Client;
+import com.example.reto3.entities.Library;
 import com.example.reto3.entities.Message;
 import com.example.reto3.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +25,9 @@ public class MessageController {
     public Message save(@RequestBody Message p){
         return messageService.save(p);
    }
-
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message update(@RequestBody Message p){return messageService.update(p);}
+    @DeleteMapping("/{idMessage}")
+    public boolean delete(@PathVariable("idMessage") int idMessage){return messageService.delete(idMessage);}
 }

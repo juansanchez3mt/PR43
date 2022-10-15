@@ -1,5 +1,6 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.Library;
 import com.example.reto3.entities.Score;
 import com.example.reto3.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,7 @@ public class ScoreController {
     public Score update(@RequestBody Score s){
         return scoreService.update(s);
     }
+    @DeleteMapping("/{idScore}")
+    public boolean delete(@PathVariable("idScore") int idScore){return scoreService.delete(idScore);}
 }
 

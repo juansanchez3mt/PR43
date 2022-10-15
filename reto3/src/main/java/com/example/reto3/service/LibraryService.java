@@ -16,16 +16,16 @@ public class LibraryService {
     public List<Library> getAll(){
         return libraryRepository.getAll();
     }
-    public Optional<Library> getLibrary(int id){
-        return libraryRepository.getLibrary(id);
-    }
+    /*public Optional<Library> getById(int id){
+        return libraryRepository.getById(id);
+    }*/
 
     public Library save(Library c){
         if(c.getId()==null){
             return libraryRepository.save(c);
 
         }else {
-            Optional<Library> e = libraryRepository.getLibrary(c.getId());
+            Optional<Library> e = libraryRepository.getById(c.getId());
             if (e.isPresent()){
                 return c;
             }else {
@@ -35,7 +35,7 @@ public class LibraryService {
     }
     public Library update(Library c){
         if(c.getId()!=null){
-            Optional<Library> q = libraryRepository.getLibrary(c.getId());
+            Optional<Library> q = libraryRepository.getById(c.getId());
             if (q.isPresent()){
                 if(c.getName()!=null){
                     q.get().setName(c.getName());
@@ -60,13 +60,13 @@ public class LibraryService {
         }
     }
     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Library>p= libraryRepository.getLibrary(id);
-        if (p.isPresent()){
-            libraryRepository.delete(p.get());
-            flag=true;
-        }
 
-        return flag;
+        Optional<Library>c= libraryRepository.getById(id);
+        if (c.isPresent()){
+            libraryRepository.delete(c.get());
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -2,7 +2,6 @@ package com.example.reto3.service;
 
 import com.example.reto3.entities.Score;
 import com.example.reto3.repository.ScoreRepository;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +37,18 @@ public class ScoreService {
                 if(s.getScore()!= null){
                     temp.setScore(s.getScore());
                 }
-
                 return scoreRepository.save(temp);
             }
         }
         return s;
+    }
+    public boolean delete(int idScore){
+        Optional<Score> s= scoreRepository.getById(idScore);
+        if (s.isPresent()){
+            scoreRepository.delete(s.get());
+            return true;
+        }else{
+            return false;
+        }
     }
 }
