@@ -1,7 +1,7 @@
 package com.example.reto3.controller;
 
 import com.example.reto3.entities.Score;
-import com.example.reto3.services.ScoreService;
+import com.example.reto3.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

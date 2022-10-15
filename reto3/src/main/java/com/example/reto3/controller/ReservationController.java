@@ -1,7 +1,8 @@
 package com.example.reto3.controller;
 
 import com.example.reto3.entities.Reservation;
-import com.example.reto3.services.ReservationService;
+
+import com.example.reto3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

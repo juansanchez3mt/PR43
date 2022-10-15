@@ -11,6 +11,10 @@ public class Score implements Serializable {
     private Integer idScore;
     private Integer score;
 
+    @OneToOne
+    @JoinColumn (name = "idScore")
+    private Reservation reservations;
+
     public Integer getIdScore() {
         return idScore;
     }
@@ -25,5 +29,13 @@ public class Score implements Serializable {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public Reservation getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Reservation reservations) {
+        this.reservations = reservations;
     }
 }
