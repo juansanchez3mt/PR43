@@ -1,18 +1,18 @@
 $("document").ready(function (){
-    getReservation();
+    getReservations();
     getLibs();
-    getClient();
-    getScore();
+    getClients();
+    getScores();
 });
-function getReservation(){
+function getReservations(){
     $.ajax({
         url: "api/Reservation/all",
         type: 'GET',
         dataType: 'json',
-        success: function (reservation){
-            $("#reservation").empty();
-            for(i= 0; i< reservation.length; i++){
-                $("#reservation").append(reservation[i].idReservation+ " "+reservation[i].startDate+ " "+reservation[i].devolutionDate+ " "+ reservation[i].status+ " "+ reservation[i].libs+ " "+ reservation[i].client+ " "+ reservation[i].score+ " <button onclick='getDetailReservation("+reservation[i].idReservation+")'>Seleccionar</<button><button onclick='deleteReservation("+reservation[i].idReservation+")'>Borrar</button><br>");
+        success: function (reservations){
+            $("#reservations").empty();
+            for(i= 0; i< reservations.length; i++){
+                $("#reservations").append("<option value='"+reservations[i].idReservation+"'>"+ reservations[i].idReservation+ " "+reservations[i].startDate+ " "+reservations[i].devolutionDate+ " "+ reservations[i].status+ " "+ reservations[i].libs+ " "+ reservations[i].clients+ " "+ reservations[i].scores+ "</option><button onclick='getDetailReservations("+reservations[i].idReservation+")'>Seleccionar</<button><button onclick='deleteReservations("+reservations[i].idReservation+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -20,78 +20,78 @@ function getReservation(){
         }
     });
 }
-function getReservationInfo(){
+function getReservationsInfo(){
     let data={
-        idReservation: $("#reservationIdReservation").val(),
-        startDate: $("#reservationStartDate").val(),
-        devolutionDate: $("#reservationDevolutionDate").val(),
-        status: $("#reservationStatus").val(),
+        idReservation: $("#reservationsIdReservation").val(),
+        startDate: $("#reservationsStartDate").val(),
+        devolutionDate: $("#reservationsDevolutionDate").val(),
+        status: $("#reservationsStatus").val(),
         libs:{
             id: $("#libs option:selected").val()
         },
-        client:{
-            id: $("#client option:selected").val()
+        clients:{
+            id: $("#clients option:selected").val()
         },
-        score:{
-            id: $("#score option:selected").val()
+        scores:{
+            id: $("#scores option:selected").val()
         }
     }
     return data;
 }
-function cleanReservationInfo(){
+function cleanReservationsInfo(){
     let data={
-        idReservation: $("#reservationIdReservation").val(""),
-        startDate: $("#reservationStartDate").val(""),
-        devolutionDate: $("#reservationDevolutionDate").val(""),
-        status: $("#reservationStatus").val(""),
+        idReservation: $("#reservationsIdReservation").val(""),
+        startDate: $("#reservationsStartDate").val(""),
+        devolutionDate: $("#reservationsDevolutionDate").val(""),
+        status: $("#reservationsStatus").val(""),
         libs:{
             id: $("#libs option:selected").val("")
         },
-        client:{
-            id: $("#client option:selected").val("")
+        clients:{
+            id: $("#clients option:selected").val("")
         },
-        score:{
-            id: $("#score option:selected").val("")
+        scores:{
+            id: $("#scores option:selected").val("")
         }
     }
     return data;
 }
-function saveReservation(){
+function saveReservations(){
     $.ajax({
         url: "api/Reservation/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify(getReservationInfo()),
-        success: function (meservation){
-            getReservation();
-            console.log(getReservationInfo());
-            cleanReservationInfo();
+        data: JSON.stringify(getReservationsInfo()),
+        success: function (meservations){
+            getReservations();
+            console.log(getReservationsInfo());
+            cleanReservationsInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
         }
     });
 }
-function getDetailReservation(idReservation){
+function getDetailReservations(idReservation){
     $.ajax({
         url: "api/Reservation/all",
         type: 'GET',
         dataType: 'json',
-        success: function (reservation){
+        success: function (reservations){
             let data={
-                idReservation: $("#reservationIdReservation").val(reservation[0].idReservation),
-                startDate: $("#reservationStartDate").val(reservation[0].startDate),
-                devolutionDate: $("#reservationDevolutionDate").val(reservation[0].devolutionDate),
-                status: $("#reservationStatus").val(reservation[0].status),
+                idReservation: $("#reservationsIdReservation").val(reservations[0].idReservation),
+                startDate: $("#reservationsStartDate").val(reservations[0].startDate),
+                devolutionDate: $("#reservationsDevolutionDate").val(reservations[0].devolutionDate),
+                status: $("#reservationsStatus").val(reservations[0].status),
                 libs:{
-                    id: $("#libs option:selected").val(reservation[0].libs)
+                    id: $("#libs option:selected").val(reservations[0].libs)
                 },
-                client:{
-                    id: $("#client option:selected").val(reservation[0].client)
+                clients:{
+                    id: $("#clients option:selected").val(reservations[0].clients)
                 },
-                score:{
-                    id: $("#score option:selected").val(reservation[0].score)
+                scores:{
+                    id: $("#scores option:selected").val(reservations[0].scores)
                 }
             }
         },

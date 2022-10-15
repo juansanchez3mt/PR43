@@ -1,15 +1,15 @@
 $("document").ready(function (){
-    getClient();
+    getClients();
 });
-function getClient(){
+function getClients(){
     $.ajax({
         url: "api/Client/all",
         type: 'GET',
         dataType: 'json',
-        success: function(client){
-            $("#client").empty();
-            for(i= 0; i< client.length; i++){
-                $("#client").append("<option value='"+client[i].idClient+"'>"+client[i].idClient+ " "+ client[i].name+ " "+ client[i].age+ " "+ client[i].email+ "</option><button onclick='getDetailClient("+client[i].idClient+")'>Seleccionar</button><button onclick='deleteClient("+client[i].idClient+")'>Borrar</button><br>");
+        success: function(clients){
+            $("#clients").empty();
+            for(i= 0; i< clients.length; i++){
+                $("#clients").append("<option value='"+clients[i].idClient+"'>"+clients[i].idClient+ " "+ clients[i].name+ " "+ clients[i].age+ " "+ clients[i].email+ "</option><button onclick='getDetailClients("+clients[i].idClient+")'>Seleccionar</button><button onclick='deleteClients("+clients[i].idClient+")'>Borrar</button><br>");
             }
         },
         error: function (xhr, status){
@@ -17,55 +17,55 @@ function getClient(){
         }
     });
 }
-function getClientInfo(){
+function getClientsInfo(){
     let data={
-        idClient: $("#clientIdClient").val(),
-        email: $("#clientEmail").val(),
-        name: $("#clientName").val(),
-        age: $("#clientAge").val(),
-        password: $("#clientPassword").val()
+        idClient: $("#clientsIdClient").val(),
+        email: $("#clientsEmail").val(),
+        name: $("#clientsName").val(),
+        age: $("#clientsAge").val(),
+        password: $("#clientsPassword").val()
     }
     return data;
 }
-function cleanClientInfo(){
+function cleanClientsInfo(){
     let data={
-        idClient: $("#clientIdClient").val(""),
-        email: $("#clientEmail").val(""),
-        name: $("#clientName").val(""),
-        age: $("#clientAge").val(""),
-        password: $("#clientPassword").val("")
+        idClient: $("#clientsIdClient").val(""),
+        email: $("#clientsEmail").val(""),
+        name: $("#clientsName").val(""),
+        age: $("#clientsAge").val(""),
+        password: $("#clientsPassword").val("")
     }
     return data;
 }
-function saveClient(){
+function saveClients(){
     $.ajax({
         url: "api/Client/save",
         type: 'POST',
         dataType: 'json',
         contentType: 'application/json',
-        data: JSON.stringify(getClientInfo()),
-        success: function (client){
-            getClient();
-            console.log(getClientInfo());
-            cleanClientInfo();
+        data: JSON.stringify(getClientsInfo()),
+        success: function (clients){
+            getClients();
+            console.log(getClientsInfo());
+            cleanClientsInfo();
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
         }
     });
 }
-function getDetailClient(idClient){
+function getDetailClients(idClient){
     $.ajax({
         url: "api/Client/all",
         type: 'GET',
         dataType: 'json',
-        success: function (client){
+        success: function (clients){
             let data={
-                idClient: $("#clientIdClient").val(client[0].idClient),
-                email: $("#clientEmail").val(client[0].email),
-                name: $("#clientName").val(client[0].name),
-                age: $("#clientAge").val(client[0].age),
-                password: $("#clientPassword").val(client[0].password)
+                idClient: $("#clientsIdClient").val(clients[0].idClient),
+                email: $("#clientsEmail").val(clients[0].email),
+                name: $("#clientsName").val(clients[0].name),
+                age: $("#clientsAge").val(clients[0].age),
+                password: $("#clientsPassword").val(clients[0].password)
             }
         },
         error: function(xhr, status){
