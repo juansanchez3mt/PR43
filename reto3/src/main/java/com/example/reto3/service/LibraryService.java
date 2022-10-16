@@ -1,5 +1,6 @@
 package com.example.reto3.service;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Library;
 import com.example.reto3.repository.LibraryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class LibraryService {
 
     public List<Library> getAll(){
         return libraryRepository.getAll();
+    }
+    public Optional<Library>getById(int id) {
+        return libraryRepository.getById(id);
     }
     /*public Optional<Library> getById(int id){
         return libraryRepository.getById(id);

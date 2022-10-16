@@ -15,6 +15,9 @@ public class CategoryService {
     public List<Category> getAll(){
         return categoryRepository.getAll();
     }
+    public Optional<Category>getById(int id) {
+        return categoryRepository.getById(id);
+    }
     public Category save(Category c){
         if(c.getId()==null){
             return categoryRepository.save(c);

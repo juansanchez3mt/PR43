@@ -1,5 +1,6 @@
 package com.example.reto3.service;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Message;
 import com.example.reto3.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class MessageService {
 
     public List<Message> getAll(){
         return messageRepository.getAll();
+    }
+    public Optional<Message>getById(int idMessage) {
+        return messageRepository.getById(idMessage);
     }
     public Message save(Message p){
         if(p.getIdMessage()==null){

@@ -60,7 +60,10 @@ function getDetailCategory(id){
                 id: $("#categoryId").val(category.id),
                 name: $("#categoryName").val(category.name),
                 description: $("#categoryDescription").val(category.description)
+
             }
+            getCategory();
+            console.log(getCategoryinfo());
         },
         error: function(xhr, status){
             alert('Ha sucedido un problema');
