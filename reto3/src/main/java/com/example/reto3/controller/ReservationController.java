@@ -1,5 +1,6 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Library;
 import com.example.reto3.entities.Reservation;
 
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Reservation")
@@ -18,6 +20,10 @@ public class ReservationController {
     @GetMapping("/all")
     public List<Reservation> getAll(){
         return reservationService.getAll();
+    }
+    @GetMapping("/{idReservation}")
+    public Optional<Reservation> getById(@PathVariable("idReservation") int idReservation) {
+        return reservationService.getById(idReservation);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

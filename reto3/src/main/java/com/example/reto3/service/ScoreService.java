@@ -1,5 +1,6 @@
 package com.example.reto3.service;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Score;
 import com.example.reto3.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class ScoreService {
     private ScoreRepository scoreRepository;
     public List<Score> getAll(){
         return scoreRepository.getAll();
+    }
+    public Optional<Score>getById(int idScore) {
+        return scoreRepository.getById(idScore);
     }
     public Score save(Score s){
         if(s.getIdScore()== null){

@@ -1,5 +1,6 @@
 package com.example.reto3.service;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Client;
 import com.example.reto3.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class ClientService {
 
     public List<Client> getAll(){
         return clientRepository.getAll();
+    }
+    public Optional<Client>getById(int idClient) {
+        return clientRepository.getById(idClient);
     }
     public Client save(Client c){
         if(c.getIdClient()==null){

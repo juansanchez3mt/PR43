@@ -1,5 +1,6 @@
 package com.example.reto3.controller;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Client;
 import com.example.reto3.entities.Library;
 import com.example.reto3.service.LibraryService;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/Lib")
@@ -18,6 +20,10 @@ public class LibraryController {
     @GetMapping("/all")
     public List<Library> getAll(){
         return libraryService.getAll();
+    }
+    @GetMapping("/{id}")
+    public Optional<Library> getById(@PathVariable("id") int id) {
+        return libraryService.getById(id);
     }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)

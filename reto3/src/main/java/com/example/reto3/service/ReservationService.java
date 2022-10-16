@@ -1,5 +1,6 @@
 package com.example.reto3.service;
 
+import com.example.reto3.entities.Category;
 import com.example.reto3.entities.Reservation;
 import com.example.reto3.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class ReservationService {
     private ReservationRepository reservationRepository;
     public List<Reservation> getAll(){
         return reservationRepository.getAll();
+    }
+    public Optional<Reservation>getById(int idReservation) {
+        return reservationRepository.getById(idReservation);
     }
     public Reservation save(Reservation r){
         if(r.getIdReservation()== null){
