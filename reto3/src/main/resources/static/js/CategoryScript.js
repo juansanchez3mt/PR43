@@ -1,11 +1,11 @@
 $("document").ready(function (){
-    getCategory();
+    getCategoryinfo();
 });
 function getCategory(){
     $.ajax({
-        url: "api/Category/all",
+        url: "/api/Category/all",
         type: 'GET',
-        dataType: 'json',
+        dataType: 'JSON',
         success: function (category){
             $("#category").empty();
             for(i= 0; i< category.length; i++){
