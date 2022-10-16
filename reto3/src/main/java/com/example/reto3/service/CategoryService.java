@@ -12,20 +12,14 @@ import java.util.Optional;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
-
     public List<Category> getAll(){
         return categoryRepository.getAll();
     }
-    public Optional<Category> getCategory(int id){
-        return categoryRepository.getCategory(id);
-    }
-
     public Category save(Category c){
         if(c.getId()==null){
             return categoryRepository.save(c);
-
         }else {
-            Optional<Category> e = categoryRepository.getCategory(c.getId());
+            Optional<Category> e = categoryRepository.getById(c.getId());
             if (e.isPresent()){
                 return c;
             }else {
@@ -35,7 +29,7 @@ public class CategoryService {
     }
     public Category update(Category c){
         if(c.getId()!=null){
-            Optional<Category> q = categoryRepository.getCategory(c.getId());
+            Optional<Category> q = categoryRepository.getById(c.getId());
             if (q.isPresent()){
                 if(c.getName()!=null){
                     q.get().setName(c.getName());
@@ -48,19 +42,17 @@ public class CategoryService {
             }else{
                 return c;
             }
-
         }else{
             return  c;
         }
     }
     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Category>p= categoryRepository.getCategory(id);
-        if (p.isPresent()){
-            categoryRepository.delete(p.get());
-            flag=true;
+        Optional<Category> c= categoryRepository.getById(id);
+        if (c.isPresent()){
+            categoryRepository.delete(c.get());
+            return true;
+        }else{
+            return false;
         }
-
-        return flag;
     }
 }

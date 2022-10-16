@@ -73,3 +73,20 @@ function getDetailClients(idClient){
         }
     });
 }
+function deleteClients(idClient){
+    $.ajax({
+        url: "api/Client/"+idClient,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({id: idClient}),
+        success: function (clients){
+            getClients();
+            console.log({id: idClient});
+            cleanClientsInfo();
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}

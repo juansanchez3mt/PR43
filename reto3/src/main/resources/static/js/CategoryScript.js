@@ -52,14 +52,14 @@ function saveCategory(){
 }
 function getDetailCategory(id){
     $.ajax({
-        url: "api/Category/all",
+        url: "api/Category/"+ id,
         type: 'GET',
         dataType: 'json',
         success: function (category){
             let data={
-                id: $("#categoryId").val(category[0].id),
-                name: $("#categoryName").val(category[0].name),
-                description: $("#categoryDescription").val(category[0].description)
+                id: $("#categoryId").val(category.id),
+                name: $("#categoryName").val(category.name),
+                description: $("#categoryDescription").val(category.description)
             }
         },
         error: function(xhr, status){
@@ -67,6 +67,37 @@ function getDetailCategory(id){
         }
     });
 }
+function updateCategory(){
+    $.ajax({
+        url: "api/Category/update",
+        type: 'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(getCategoryinfo()),
+        success: function (category){
+            getCategory();
+            console.log(getCategoryinfo());
+            cleanCategoryInfo();
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
+}
 function deleteCategory(id){
-``
+    $.ajax({
+        url: "api/Category/"+id,
+        type: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify({id: id}),
+        success: function (category){
+            getCategory();
+            console.log({id: id});
+            cleanCategoryInfo();
+        },
+        error: function(xhr, status){
+            alert('Ha sucedido un problema');
+        }
+    });
 }
