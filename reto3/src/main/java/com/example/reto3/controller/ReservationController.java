@@ -36,5 +36,6 @@ public class ReservationController {
         return reservationService.update(r);
     }
     @DeleteMapping("/{idReservation}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("idReservation") int idReservation){return reservationService.delete(idReservation);}
 }

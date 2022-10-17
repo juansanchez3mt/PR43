@@ -35,6 +35,7 @@ public class ScoreController {
         return scoreService.update(s);
     }
     @DeleteMapping("/{idScore}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("idScore") int idScore){return scoreService.delete(idScore);}
 }
 
